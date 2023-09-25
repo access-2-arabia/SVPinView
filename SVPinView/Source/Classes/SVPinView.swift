@@ -81,6 +81,7 @@ public class SVPinView: UIView {
     public var keyboardAppearance: UIKeyboardAppearance = .default
     public var becomeFirstResponderAtIndex: Int? = nil
     public var isContentTypeOneTimeCode: Bool = true
+    public var semanticAttribute: UISemanticContentAttribute = .forceLeftToRight
     public var shouldDismissKeyboardOnEmptyFirstField: Bool = false
     public var pinInputAccessoryView: UIView? {
         didSet { refreshPinView() }
@@ -110,7 +111,8 @@ public class SVPinView: UIView {
         collectionView.register(collectionViewNib, forCellWithReuseIdentifier: reuseIdentifier)
         flowLayout.scrollDirection = .vertical
         collectionView.isScrollEnabled = false
-                
+        collectionView.semanticContentAttribute = semanticAttribute
+        
         self.addSubview(view)
         view.frame = bounds
         view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
